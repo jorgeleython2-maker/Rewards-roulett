@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reward Roulette</title>
+  <!-- Primary Meta -->
+  <meta name="description" content="The wheel spins every 10 seconds, rewarding holders with 100% of the creator’s reward winnings! Track transactions on Solscan and watch live on Pumpfun." />
+  <meta name="theme-color" content="#171a20" />
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Holders Payout" />
+  <meta property="og:description" content="The wheel spins every 10 seconds, rewarding holders with 100% of the creator’s reward winnings! Track transactions on Solscan and watch live on Pumpfun." />
+  <meta property="og:image" content="/logo.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://www.holderspayout.fun/" />
+  <meta property="og:site_name" content="Holders Payout" />
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@HoldersPayout" />
+  <meta name="twitter:title" content="Holders Payout" />
+  <meta name="twitter:description" content="The wheel spins every 10 seconds, rewarding holders with 100% of the creator’s reward winnings! — live on Pumpfun and trackable on Solscan." />
+  <meta name="twitter:image" content="/logo.png" />
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/logo.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/logo.png" />
+  <link rel="icon" href="/logo.png" type="image/svg+xml" />
+  <link rel="shortcut icon" href="/logo.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/logo.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <!-- Fonts and Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body {
+      background: #171a20;
+      font-family: 'Poppins', sans-serif;
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+    .navbar {
+      background: linear-gradient(90deg, #4ade80, #22c55e);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .card {
+      background: #1e2128;
+      border-radius: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 10px 30px rgba(34, 197, 94, 0.15);
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(74, 222, 128, 0.3);
+    }
+    .glow {
+      box-shadow: 0 0 15px rgba(74, 222, 128, 0.5);
+    }
+    .title-glow {
+      background: linear-gradient(45deg, #4ade80, #22c55e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
+    }
+    @keyframes neon-pulse {
+      0% { box-shadow: 0 0 10px rgba(74, 222, 128, 0.3), 0 0 20px rgba(74, 222, 128, 0.1); }
+      50% { box-shadow: 0 0 20px rgba(74, 222, 128, 0.6), 0 0 30px rgba(74, 222, 128, 0.3); }
+      100% { box-shadow: 0 0 10px rgba(74, 222, 128, 0.3), 0 0 20px rgba(74, 222, 128, 0.1); }
+    }
+    .neon {
+      animation: neon-pulse 2s infinite;
+    }
+    .hero-bg {
+      background: radial-gradient(circle at center, rgba(74, 222, 128, 0.2) 0%, transparent 70%);
+    }
+    .btn-primary {
+      background: linear-gradient(90deg, #4ade80, #22c55e);
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(74, 222, 128, 0.5);
+    }
+    .btn-secondary {
+      background: transparent;
+      border: 2px solid #4ade80;
+      transition: all 0.3s ease;
+    }
+    .btn-secondary:hover {
+      background: #4ade80;
+      color: #1e2128;
+      transform: scale(1.05);
+    }
+    @media (max-width: 640px) {
+      .navbar { flex-direction: column; gap: 1rem; }
+      .navbar-buttons { flex-direction: column; gap: 0.75rem; }
+      .title-glow { font-size: 2.5rem; }
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-dark">
+  <nav class="navbar flex justify-between items-center rounded-b-2xl">
+    <div class="text-2xl sm:text-3xl font-bold text-white font-orbitron">Reward Roulette</div>
+    <div class="navbar-buttons flex gap-4 items-center">
+      <a href="https://x.com/HoldersPayout" target="_blank" class="text-white hover:text-gray-200 flex items-center transition-colors duration-300">
+        <i class="fab fa-x-twitter mr-2"></i> Follow on X
+      </a>
+      <a href="https://pump.fun/" target="_blank" class="btn-primary inline-block text-white font-semibold py-2 px-6 rounded-full hover:text-white">
+        Buy Now
+      </a>
+    </div>
+  </nav>
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+    <header class="text-center mb-12 hero-bg py-16 rounded-3xl">
+      <div class="flex justify-center mb-6">
+        <img src="/logo2.png" alt="Holders Payout Logo" class="h-28 w-28 sm:h-36 sm:w-36 rounded-full border-4 border-green-400 neon">
+      </div>
+      <h1 class="title-glow text-4xl sm:text-6xl font-bold font-orbitron mb-4">Reward Roulette</h1>
+      <p class="text-lg sm:text-xl mt-4 text-gray-200 max-w-2xl mx-auto">The wheel spins every 10 seconds, rewarding holders with 100% of the creator’s reward winnings!</p>
+      <p class="text-md sm:text-lg mt-3 text-gray-400">Watch every spin live on <a href="https://pump.fun/coin/" target="_blank" class="text-green-400 hover:underline">Pumpfun</a> and track transactions on <a href="https://solscan.io/account/DGLwyM1noy9hx1qUKrCFWMTQpTV2kfFzqjTn9NUNPKSV" target="_blank" class="text-green-400 hover:underline">Solscan</a>.</p>
+      <div class="flex justify-center gap-4 mt-6">
+        <a href="https://pump.fun/" target="_blank" class="btn-primary inline-block text-white font-semibold py-3 px-8 rounded-full text-lg">Join the Spin</a>
+        <a href="https://solscan.io/account/DGLwyM1noy9hx1qUKrCFWMTQpTV2kfFzqjTn9NUNPKSV" target="_blank" class="btn-secondary inline-block text-white font-semibold py-3 px-8 rounded-full text-lg">View Transactions</a>
+      </div>
+    </header>
+
+    <section class="card p-6 sm:p-8 mb-8">
+      <h2 class="text-3xl sm:text-4xl font-semibold mb-6 text-white font-orbitron">What is Holders Payout?</h2>
+      <p class="text-lg text-gray-300 mb-6">
+        Holders Payout is a revolutionary decentralized platform on the Solana blockchain. Every 10 seconds, our automated wheel spins, distributing <span class="text-green-400 font-semibold">100% of the creator’s reward winnings</span> in SOL directly to token holders. Enjoy a transparent, engaging, and rewarding experience!
+      </p>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-300">
+        <li class="flex items-start"><i class="fas fa-star text-green-400 mr-2 mt-1"></i> <span><span class="text-green-400 font-semibold">Frequent Rewards:</span> Spins every 10 seconds for constant winning opportunities.</span></li>
+        <li class="flex items-start"><i class="fas fa-handshake text-green-400 mr-2 mt-1"></i> <span><span class="text-green-400 font-semibold">Fair Distribution:</span> Automatic rewards based on token ownership.</span></li>
+        <li class="flex items-start"><i class="fas fa-eye text-green-400 mr-2 mt-1"></i> <span><span class="text-green-400 font-semibold">Transparent:</span> Track all spins and payouts on <a href="https://solscan.io/account/DGLwyM1noy9hx1qUKrCFWMTQpTV2kfFzqjTn9NUNPKSV" target="_blank" class="text-green-400 hover:underline">Solscan</a> and watch live on <a href="https://pump.fun/coin/" target="_blank" class="text-green-400 hover:underline">Pumpfun</a>.</span></li>
+        <li class="flex items-start"><i class="fas fa-users text-green-400 mr-2 mt-1"></i> <span><span class="text-green-400 font-semibold">Community-Driven:</span> Join a vibrant community and stay updated.</span></li>
+      </ul>
+    </section>
+
+    <section class="card p-6 sm:p-8 mb-8">
+      <h2 class="text-3xl sm:text-4xl font-semibold mb-6 text-white font-orbitron">How It Works</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div class="text-center p-4 rounded-lg bg-gray-800/50 hover:bg-gray-800/70 transition-colors">
+          <i class="fas fa-coins text-4xl text-green-400 mb-4"></i>
+          <h3 class="text-xl font-semibold text-white mb-2">Hold Tokens</h3>
+          <p class="text-gray-300">Own Holders Payout tokens to participate in the ecosystem.</p>
+        </div>
+        <div class="text-center p-4 rounded-lg bg-gray-800/50 hover:bg-gray-800/70 transition-colors">
+          <i class="fas fa-sync-alt text-4xl text-green-400 mb-4"></i>
+          <h3 class="text-xl font-semibold text-white mb-2">Spin Every 10s</h3>
+          <p class="text-gray-300">Smart contract spins the wheel every 10 seconds, selecting winners.</p>
+        </div>
+        <div class="text-center p-4 rounded-lg bg-gray-800/50 hover:bg-gray-800/70 transition-colors">
+          <i class="fas fa-wallet text-4xl text-green-400 mb-4"></i>
+          <h3 class="text-xl font-semibold text-white mb-2">Win SOL</h3>
+          <p class="text-gray-300">Instant SOL rewards funded by 100% of creator winnings.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+<footer class="text-center py-8 text-gray-400 bg-gray-900/50">
+  <p>&copy; 2025 Holders Payout. All rights reserved.</p>
+  <div class="flex justify-center gap-4 mt-4">
+    <a href="https://x.com/HoldersPayout" target="_blank" class="text-gray-400 hover:text-green-400" aria-label="Visitar X">
+      <i class="fab fa-x-twitter text-xl"></i>
+    </a>
+    <a href="https://pump.fun/" target="_blank" class="text-gray-400 hover:text-green-400" aria-label="Visitar Pump.fun">
+      <i class="fas fa-coins text-xl"></i>
+    </a>
+    <a href="https://solscan.io/account/DGLwyM1noy9hx1qUKrCFWMTQpTV2kfFzqjTn9NUNPKSV" target="_blank" class="text-gray-400 hover:text-green-400" aria-label="Ver transacciones en Solscan">
+      <i class="fas fa-link text-xl"></i>
+    </a>
+  </div>
+</footer>
+</body>
+</html>
